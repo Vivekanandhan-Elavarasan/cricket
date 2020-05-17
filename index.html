@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <title> Cricket game</title>
+    <link rel="stylesheet" type="text/css" href="cricket.css" />
+    <script language="javascript" type="text/javascript" src="cricket.js"></script>
+
+</head>
+
+<body>
+    <div style="text-align:center;">
+        <h1>CRICKET 10</h1>
+    </div><br>
+    <form name="form1" action="index_cricket_01.html" method="get">
+        <div class="container">
+
+            <div class="row">
+                <div style="text-align: center;" class="col-lg-4">
+                    <p style="text-align: center;">
+                    <h3>TEAM 1 SCORE</h3>
+                    </p>
+                    <h3 id="team1score">0</h3>
+                    <button id="hit1" type="button" class="btn btn-primary" onclick="team1(); countdown( );">HIT1</button>
+                </div>
+                <div style="text-align: center;" class="col-lg-4">
+                    <p style="text-align: center;">
+                    <h3>Timer</h3>
+                    </p>
+                    <h3 id="counter"></h3>
+                </div>
+                <div style="text-align: center;" class="col-lg-4">
+                    <p style="text-align: center;">
+                    <h3>TEAM 2 SCORE</h3>
+                    </p>
+                    <h3 id="team2score">0</h3>
+                    <button id="hit2" type="button" class="btn btn-primary" onclick="team2(); countdown();">HIT2</button>
+                </div>
+            </div>
+            <div class="row">
+                <div style="text-align: center;" class="col-lg-12">
+                    <button id="gresult" type="button" class="btn btn-primary"
+                        onclick="generate_output(); NewTab()">Generate Result</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    <div id="team1"></div>
+                    <div id="team1_total"></div>
+                </div>
+                <div class="col-lg-4">
+                    <div style="text-align: center;">MATCH WON BY</div>
+                    <div id="team_result" style="text-align: center;"></div>
+                    <div style="text-align: center;">MAN OF THE MATCH</div>
+                    <div id="man_of_Match" style="text-align: center;"></div>
+                </div>
+                <div class="col-lg-4">
+                    <div id="team2"></div>
+                    <div id="team2_total"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script>
+        
+        function countdown(minutes) {
+    var seconds = 60;
+   var mins = minutes
+    function tick() {
+        //This script expects an element with an ID = "counter". You can change that to what ever you want. 
+        var counter = document.getElementById("counter");
+       // var current_minutes = mins-1
+        seconds--;
+        counter.innerHTML = String(seconds);
+        
+        if( seconds > 0 ) {
+            setTimeout(tick, 1000);
+        }
+        if(seconds<0){
+            return 0;
+        } /*else {
+            if(mins > 1){
+                countdown(mins-1);           
+            }
+        }*/
+    }
+    tick();
+}
+    </script>
+
+    <script src="cricket.js"></script>
+
+</body>
+
+</html>
