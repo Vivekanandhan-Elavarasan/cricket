@@ -1,98 +1,79 @@
-<!DOCTYPE html>
-
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<html>
 
 <head>
-    <meta charset="utf-8" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-    <title> Cricket game</title>
-    <link rel="stylesheet" type="text/css" href="cricket.css" />
-    <script language="javascript" type="text/javascript" src="cricket.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <style>
+        .align-center {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        table,
+        td,
+        th {
+            border: 1px solid black;
+            border-collapse: separate;
+        }
+    </style>
 
 </head>
 
 <body>
-    <div style="text-align:center;">
-        <h1>CRICKET 10</h1>
-    </div><br>
-    <form name="form1" action="index_cricket_01.html" method="get">
-        <div class="container">
+    <center>
+        <h3>Cricket Match</h3>
+    </center>
 
-            <div class="row">
-                <div style="text-align: center;" class="col-lg-4">
-                    <p style="text-align: center;">
-                    <h3>TEAM 1 SCORE</h3>
-                    </p>
-                    <h3 id="team1score">0</h3>
-                    <button id="hit1" type="button" class="btn btn-primary" onclick="team1(); countdown( );">HIT1</button>
-                </div>
-                <div style="text-align: center;" class="col-lg-4">
-                    <p style="text-align: center;">
-                    <h3>Timer</h3>
-                    </p>
-                    <h3 id="counter"></h3>
-                </div>
-                <div style="text-align: center;" class="col-lg-4">
-                    <p style="text-align: center;">
-                    <h3>TEAM 2 SCORE</h3>
-                    </p>
-                    <h3 id="team2score">0</h3>
-                    <button id="hit2" type="button" class="btn btn-primary" onclick="team2(); countdown();">HIT2</button>
+    <div id='matchDiv'>
+        <div class='container'>
+            <div class='row mb-5'>
+                <div class='col-sm-12 text-center'>
+                    Click Start to start the Match. Click on hit to hit the ball. Player 1 goes first. Each team has 10
+                    players and 60 seconds to play their turn.
                 </div>
             </div>
-            <div class="row">
-                <div style="text-align: center;" class="col-lg-12">
-                    <button id="gresult" type="button" class="btn btn-primary"
-                        onclick="generate_output(); NewTab()">Generate Result</button>
+            <div class='row'>
+                <div class='col-lg-5 text-center' id='playerOne'>
+                    Player One
+                </div>
+                <div class='col-lg-2 text-center'><button id='startMatch' onclick="startMatch()" class='btn btn-primary'>Team One Start Batting</button><br>Timer
+                    <div id='timer'>60</div><br><button id="hitBtn" onclick='hit()' disabled='true' class='btn btn-primary disabled'>Hit</button>
+                    <br>
+                    <div id='textDiv'></div>
+                </div>
+                <div class='col-lg-5 text-center' id='playerTwo'>
+                    Player Two
                 </div>
             </div>
-            <div class="row">
-                <div class="col-lg-4">
-                    <div id="team1"></div>
-                    <div id="team1_total"></div>
+            <div class='row'>
+                <div class='col-lg-5'>
+                    <div id='oneText'></div>
                 </div>
-                <div class="col-lg-4">
-                    <div style="text-align: center;">MATCH WON BY</div>
-                    <div id="team_result" style="text-align: center;"></div>
-                    <div style="text-align: center;">MAN OF THE MATCH</div>
-                    <div id="man_of_Match" style="text-align: center;"></div>
+                <div class='col-lg-2'>
                 </div>
-                <div class="col-lg-4">
-                    <div id="team2"></div>
-                    <div id="team2_total"></div>
+                <div class='col-lg-5'>
+                    <div id='twoText'></div>
+                </div>
+            </div>
+            <div class='row'>
+                <div class='col-lg-5'>
+                    Runs : <div id='OneTotalText'>0</div>
+                </div>
+                <div class='col-lg-2'>
+                    <button id="resBtn" onclick='generateResults()' disabled='true' class='btn btn-primary disabled'>generateResults</button>
+                </div>
+                <div class='col-lg-5'>
+                    Runs : <div id='TwoTotalText'>0</div>
                 </div>
             </div>
         </div>
-    </form>
-    <script>
-        
-        function countdown(minutes) {
-    var seconds = 60;
-   var mins = minutes
-    function tick() {
-        //This script expects an element with an ID = "counter". You can change that to what ever you want. 
-        var counter = document.getElementById("counter");
-       // var current_minutes = mins-1
-        seconds--;
-        counter.innerHTML = String(seconds);
-        
-        if( seconds > 0 ) {
-            setTimeout(tick, 1000);
-        }
-        if(seconds<0){
-            return 0;
-        } /*else {
-            if(mins > 1){
-                countdown(mins-1);           
-            }
-        }*/
-    }
-    tick();
-}
-    </script>
+    </div>
 
-    <script src="cricket.js"></script>
 
 </body>
+
+<script src='cricket.js'></script>
+
 
 </html>
